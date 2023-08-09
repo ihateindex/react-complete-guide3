@@ -49,13 +49,18 @@ function App() {
         setTotalYearlyData(yearlyData);
     };
 
+    let result = <p style={{ textAlign: 'center' }}>데이터가 없습니다.</p>;
+    if (totalYearlyData.length > 0) {
+        result = <Result items={totalYearlyData}></Result>;
+    }
+
     return (
         <div>
             <Header></Header>
             <Form calculateHandler={calculateHandler} resetHandler={resetHandler}></Form>
             {/* Todo: 조건부로 아래 표 표시(결과 데이터를 사용할 수 있는 경우에만) */}
             {/* 데이터를 사용할 수 없는 경우 대체 텍스트 표시 */}
-            <Result items={totalYearlyData}></Result>
+            {result}
         </div>
     );
 }
